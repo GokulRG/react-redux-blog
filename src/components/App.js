@@ -1,4 +1,5 @@
 import React from 'react';
+import PostList from './PostList';
 
 //Mostly we won't save any state or modify anything much in the app component
 //we try to handle all state transitions and what not in the individual component
@@ -6,7 +7,11 @@ import React from 'react';
 
 const App = () => {
     //This ui container is the style we apply by default on importing Semantic UI on to the App container.
-    return <div className="ui container">App</div>
+    return (
+        <div className="ui container">
+            <PostList />
+        </div>
+    );
 };
 
 export default App;
