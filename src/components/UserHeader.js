@@ -9,7 +9,8 @@ class UserHeader extends Component {
     }
 
     render() {
-        const user = this.props.users.find(user => user.id === this.props.userId);
+
+        const { user } = this.props;
 
         if (!user) {
             return <div />
@@ -23,9 +24,18 @@ class UserHeader extends Component {
 
 //This will always be outside the component, This will be written when the 
 //application needs to access the redux state. So it will take an argument of state
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
+
+    //Since we don't want the entire list of users here.. just pass in the user
+    //we would need
+
+    //But how would we get props here.. since it's outside the class
+    // That's why we pass in an argument called ownProps, That's a reference to the
+    //props of the component
+    const user = state.users.find(user => user.id === ownProps.userId);
+
     return {
-        users: state.users
+        user: user
     };
 }
 
